@@ -1,18 +1,19 @@
 {
-	"name": "cashflow",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "exit 0"
-	},
-	"author": "",
-	"license": "MIT",
-	"dependencies": {
-		"eslint": "^3.8.1",
-		"eslint-plugin-react": "^6.4.1"
-	},
-	"engines": {
-		"node": "^6.9.1"
-	}
+  "name": "cashflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^3.8.1",
+    "eslint-plugin-react": "^6.4.1",
+    "webpack": "^1.13.2"
+  },
+  "engines": {
+    "node": "^6.9.1"
+  }
 }
