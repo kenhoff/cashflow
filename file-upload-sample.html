@@ -1,0 +1,16 @@
+<!-- from https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications -->
+
+<input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+<a href="#" id="fileSelect">Select some files</a>
+
+<script type="text/javascript">
+    var fileSelect = document.getElementById("fileSelect"),
+        fileElem = document.getElementById("fileElem");
+
+    fileSelect.addEventListener("click", function(e) {
+        if (fileElem) {
+            fileElem.click();
+        }
+        e.preventDefault(); // prevent navigation to "#"
+    }, false);
+</script>
