@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "nodemon -x 'mocha'",
-		"dev": "webpack --colors --progress --watch"
+		"dev-test": "nodemon -x 'mocha'",
+		"dev": "webpack --colors --progress --watch",
+		"test": "mocha"
 	},
 	"author": "",
 	"license": "MIT",
