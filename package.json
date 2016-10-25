@@ -4,11 +4,13 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "nodemon -x 'mocha'",
 		"dev": "webpack --colors --progress --watch",
 		"postinstall": "webpack && build-static",
 		"dev-static": "nodemon -e styl,pug -x 'npm run build-static'",
-		"build-static": "stylus ./src/style.styl -o ./build && pug ./src/index.pug -o ./build"
+		"build-static": "stylus ./src/style.styl -o ./build && pug ./src/index.pug -o ./build",
+		"dev-test": "nodemon -x 'mocha'",
+		"dev": "webpack --colors --progress --watch",
+		"test": "mocha"
 	},
 	"author": "",
 	"license": "MIT",
