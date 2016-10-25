@@ -65,13 +65,12 @@ class App extends React.Component {
 		this.processData(sampleData);
 	}
 	processData(fileData) {
-		console.log("processing file data");
 		for (var n of[30,
 			60,
 			90,
 			180,
 			365]) {
-			console.log("Over the past", n, "days, your net worth has changed by " + (algorithm(fileData, n) / n).toFixed(2), "per day");
+			console.log("Over the past", n, "days, your net worth has changed by", algorithm(fileData, n), "per day");
 		}
 	}
 }

@@ -11,11 +11,7 @@ var sumTransactionsForLatestNDays = function(fileData, days) {
 			}
 		}
 	}
-	return (sum / 10000);
+	return ((sum / 10000) / days).toFixed(2); // per day
 };
 
-// for (n of[30, 60, 90, 180, 365]) {
-// 	console.log("Over the past", n, "days, your net worth has changed by " + (sumTransactionsForLatestNDays(fileData, n) / 30).toFixed(2), "per day");
-// }
-
-export default sumTransactionsForLatestNDays;
+module.exports = sumTransactionsForLatestNDays;
