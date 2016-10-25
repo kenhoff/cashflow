@@ -8,7 +8,8 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			status: "awaitingFile"
+			status: "awaitingFile",
+			results: []
 		};
 		this.handleNewFiles = this.handleNewFiles.bind(this);
 		this.useSampleFile = this.useSampleFile.bind(this);
@@ -37,9 +38,33 @@ class App extends React.Component {
 			</div>
 		);
 
+		var resultsHTML = (
+			<div>
+				{this.state.results.map(function(result) {
+					if (result.changePerDay >= 0) {
+						return (
+
+							<div key={result.days}>
+								<span>{`Over the past ${result.days} days, your net worth has increased by $${result.changePerDay} per day`}</span>
+							</div>
+						);
+					} else {
+						return (
+
+							<div key={result.days}>
+								<span>{`Over the past ${result.days} days, your net worth has decreased by -$${result.changePerDay * -1} per day`}</span>
+							</div>
+						);
+					}
+				})}
+			</div>
+		);
+
 		switch (this.state.status) {
 			case "awaitingFile":
 				return filepickerHTML;
+			case "fileProcessed":
+				return resultsHTML;
 			default:
 				return (
 					<div></div>
@@ -47,11 +72,11 @@ class App extends React.Component {
 		}
 	}
 	handleNewFiles(e, results) {
-		// console.log(results[0][1]); // <-- File
+		// console.log(results[0][1]); // <-- File object
 		var reader = new FileReader();
 		reader.readAsText(results[0][1]);
 		reader.addEventListener("loadend", () => {
-			// reader.result contains the contents of blob as a typed array
+			// reader.result contains the contents of blob as text
 			// console.log(reader.result) // <-- string of the file
 			try {
 				let fileData = JSON.parse(reader.result);
@@ -65,12 +90,16 @@ class App extends React.Component {
 		this.processData(sampleData);
 	}
 	processData(fileData) {
-		for (var n of[30,
-			60,
-			90,
-			180,
-			365]) {
-			console.log("Over the past", n, "days, your net worth has changed by", algorithm(fileData, n), "per day");
+		try {
+			let results = [30, 60, 90, 180, 365].map(function(n) {
+				return {
+					days: n,
+					changePerDay: algorithm(fileData, n)
+				};
+			});
+			this.setState({status: "fileProcessed", results});
+		} catch (e) {
+			this.setState({errorMessage: "Hmmm...we're having trouble parsing your JSON. Are you sure that you've exported your transactions from bank.simple.com in JSON format?", status: "awaitingFile"});
 		}
 	}
 }

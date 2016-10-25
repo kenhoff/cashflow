@@ -43,5 +43,5 @@ jspm_packages
 # Output of 'npm pack'
 *.tgz
 
-build/app.js
+build
 *transactions.json
