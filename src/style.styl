@@ -1,3 +1,82 @@
+// react-file-reader-input is a div by default, which means that links don't work too well.
 ._react-file-reader-input {
     display: inline;
 }
+background = #042037
+backgroundTransparent = rgba(4,35,58,0.5)
+links = #496D89
+lightGray = #728FA6
+border = 1px solid lightGray
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: background
+    color: white;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    > * {
+        max-width: 100%;
+    }
+}
+
+h1 {
+    text-align: center;
+}
+
+.uploadLink, a, a:visited {
+    color lightGray
+    text-decoration: underline;
+}
+
+.filePicker {
+    padding: 3em 1em;
+    text-align: center;
+    border-top: border
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > * {
+        // width: 250px;
+        padding: 1em;
+        text-align: center;
+        border: border
+        display: flex;
+        flex-direction: column;
+    }
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        // > * {
+        //     width: 20%;
+        //     border-right: border;
+        //     &:last-child {
+        //         border-right: none;
+        //     }
+        // }
+    }
+}
+
+.amount {
+    font-size: 3em;
+    margin: 0
+    white-space: nowrap;
+    overflow-x: visible;
+}
+
+.positiveResult > .amount {
+    color: green;
+}
+
+.negativeResult > .amount {
+    color: red;
+}
+
+.faq
+    border-top: border
+    padding: 1em;

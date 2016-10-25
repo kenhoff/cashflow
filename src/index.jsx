@@ -27,7 +27,7 @@ class App extends React.Component {
 		}
 
 		var filepickerHTML = (
-			<div>
+			<div className="filePicker">
 				{errorMessage}
 				{"To get started, "}
 				<FileReaderInput onChange={this.handleNewFiles}>
@@ -39,20 +39,22 @@ class App extends React.Component {
 		);
 
 		var resultsHTML = (
-			<div>
+			<div className="results">
 				{this.state.results.map(function(result) {
 					if (result.changePerDay >= 0) {
 						return (
-
-							<div key={result.days}>
-								<span>{`Over the past ${result.days} days, your net worth has increased by $${result.changePerDay} per day`}</span>
+							<div key={result.days} className="positiveResult">
+								<p>{result.days + " days"}</p>
+								<p className="amount">{`$${result.changePerDay}`}</p>
+								<p>per day</p>
 							</div>
 						);
 					} else {
 						return (
-
-							<div key={result.days}>
-								<span>{`Over the past ${result.days} days, your net worth has decreased by -$${result.changePerDay * -1} per day`}</span>
+							<div key={result.days} className="negativeResult">
+								<p>{result.days + " days"}</p>
+								<p className="amount">{`-$${result.changePerDay * -1}`}</p>
+								<p>per day</p>
 							</div>
 						);
 					}
