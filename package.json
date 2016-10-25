@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "webpack --colors --progress --watch",
-		"postinstall": "webpack && build-static",
+		"postinstall": "webpack && npm run build-static",
 		"dev-static": "nodemon -e styl,pug -x 'npm run build-static'",
 		"build-static": "stylus ./src/style.styl -o ./build && pug ./src/index.pug -o ./build",
 		"dev-test": "nodemon -x 'mocha'",

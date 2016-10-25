@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import FileReaderInput from "react-file-reader-input";
-import sampleData from "../2016-10-22-exported_transactions.json";
+import sampleData from "../sample-data.js";
 import algorithm from "./algorithm.js";
 
 class App extends React.Component {
