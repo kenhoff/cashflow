@@ -39,26 +39,31 @@ class App extends React.Component {
 		);
 
 		var resultsHTML = (
-			<div className="results">
-				{this.state.results.map(function(result) {
-					if (result.changePerDay >= 0) {
-						return (
-							<div key={result.days} className="positiveResult">
-								<p>{result.days + " days"}</p>
-								<p className="amount">{`$${result.changePerDay}`}</p>
-								<p>per day</p>
-							</div>
-						);
-					} else {
-						return (
-							<div key={result.days} className="negativeResult">
-								<p>{result.days + " days"}</p>
-								<p className="amount">{`-$${result.changePerDay * -1}`}</p>
-								<p>per day</p>
-							</div>
-						);
-					}
-				})}
+			<div className="results-section">
+				<div className="results">
+					{this.state.results.map(function(result) {
+						if (result.changePerDay >= 0) {
+							return (
+								<div key={result.days} className="positiveResult">
+									<p>{result.days + " days"}</p>
+									<p className="amount">{`$${result.changePerDay}`}</p>
+									<p>per day</p>
+								</div>
+							);
+						} else {
+							return (
+								<div key={result.days} className="negativeResult">
+									<p>{result.days + " days"}</p>
+									<p className="amount">{`-$${result.changePerDay * -1}`}</p>
+									<p>per day</p>
+								</div>
+							);
+						}
+					})}
+				</div>
+				<div className="uploadLink" onClick={() => {
+					this.setState({status: "awaitingFile"});
+				}}>Reset</div>
 			</div>
 		);
 
